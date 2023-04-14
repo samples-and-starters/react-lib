@@ -25,7 +25,7 @@
   "author": "maya@vista.com",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/samples-and-starters/react-lib.git/issues"
+    "url": "https://github.com/samples-and-starters/react-lib/issues"
   },
   "peerDependencies": {
     "react": "^17.0.2"

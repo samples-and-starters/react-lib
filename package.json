@@ -1,22 +1,44 @@
 {
-  "name": "@sd/react-lib",
+  "name": "@sd-samples/react-lib",
   "version": "0.1.0",
   "description": "",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
   "files": [
     "dist"
   ],
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
-    "build": "rollup -c",
+    "build": "rm -rf dist && rollup -c",
     "start": "start-storybook -p 3000",
     "build-storybook": "build-storybook",
     "prepare": "node ./prepare.js",
     "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx,.json}",
     "lint:fix": "eslint src/ --ext .js,.jsx,.ts,.tsx,.json} --fix",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+  },
+  "exports": {
+    ".": [
+      "./core/",
+      "./react/"
+    ],
+    "./core": {
+      "default": "./dist/core/index.esm.js",
+      "import": "./dist/core/index.esm.js",
+      "require": "./dist/core/index.cjs.js",
+      "types": "./dist/core/index.d.ts"
+    },
+    "./legacy": {
+      "default": "./dist/legacy/index.esm.js",
+      "import": "./dist/legacy/index.esm.js",
+      "require": "./dist/legacy/index.cjs.js",
+      "types": "./dist/legacy/index.d.ts"
+    },
+    "./react": {
+      "default": "./dist/react/index.esm.js",
+      "import": "./dist/react/index.esm.js",
+      "require": "./dist/react/index.cjs.js",
+      "types": "./dist/react/index.d.ts"
+    }
   },
   "repository": {
     "type": "git",

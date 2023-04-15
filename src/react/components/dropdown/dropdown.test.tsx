@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react"
 import React from "react"
-import { Dropdown } from "./Dropdown"
+import { Dropdown } from "./dropdown"
 
 describe("Dropdown", () => {
   test("should have class test", () => {

@@ -5,23 +5,22 @@ import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import postcss from "rollup-plugin-postcss";
-import packageJson from "./package.json" assert { type: "json" };
 
 
 export default [
     {
-        input: "src/index.ts",
+        input: { core: "src/core/index.ts", legacy: "src/legacy/index.ts", react: "src/react/index.ts" },
         external: ["react-dom"],
         output: [
             {
-                file: packageJson.main,
+                entryFileNames: "[name]/index.cjs.js",
                 format: "cjs",
-                sourcemap: true,
+                dir: "dist",
             },
             {
-                file: packageJson.module,
+                entryFileNames: "[name]/index.esm.js",
                 format: "esm",
-                sourcemap: true,
+                dir: "dist",
             },
         ],
         plugins: [
@@ -34,9 +33,15 @@ export default [
         ],
     },
     {
-        input: "src/index.ts",
-        output: [{ file: "dist/index.d.ts", format: "esm" }],
+        input: { core: "src/core/index.ts", legacy: "src/legacy/index.ts", react: "src/react/index.ts" },
+        output: [
+            {
+                entryFileNames: "[name]/index.d.ts",
+                format: "esm",
+                dir: "dist"
+            },
+        ],
         plugins: [dts()],
         external: [/\.scss$/],
-    },
+    }
 ];

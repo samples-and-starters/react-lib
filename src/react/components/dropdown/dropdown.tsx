@@ -1,5 +1,5 @@
 import React from "react"
-import "./Dropdown.scss"
+import "./dropdown.scss"
 
 export type DropdownProps = {
   className?: string
